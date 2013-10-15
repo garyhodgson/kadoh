@@ -3,11 +3,10 @@
 //
 var Node = require(__dirname + '/../../lib/node');
 var SHA1 = require(__dirname + '/../../lib/util/crypto').digest.SHA1;
-var Reporter = require(__dirname + '/../../statistics/cube/reporter');
 var logging = require(__dirname + '/../../lib/logging');
 var ConsoleLogger = require(__dirname + '/../../lib/logger/reporter/color-console')
 
-new ConsoleLogger(logging, 'error');
+new ConsoleLogger(logging, 'info');
 
 var Bot = exports.Bot = function(options) {
   options = this._options = options || {
@@ -15,15 +14,12 @@ var Bot = exports.Bot = function(options) {
     delay      : undefined,
     name       : 'bot',
     activity   : false,
-    values     : 10,
-    reporter   : false
+    values     : 10
   };
   options.node.reactor = options.node.reactor || {};
   options.node.reactor.transport = options.node.reactor.transport || {};
   options.node.reactor.transport.reconnect = true;
   this.kadoh = new Node(null, options.node);
-  if (options.reporter)
-    this.reporter = new Reporter(this.kadoh);
 };
 
 Bot.prototype.start = function() {

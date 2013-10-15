@@ -1,46 +1,62 @@
 {
-    "name": "kadoh"
-  , "version": "0.1.0"
-  , "description": "Kademlia over HTTP in Javascript"
-  , "keywords":["p2p", "kad", "kademlia", "dht", "mainline", "bittorrent", "http", "xmpp", "bosh", "udp", "socket.io"]
-  , "contributors": [
-        "Alexandre Lachèze <alexandre.lacheze@gmail.com>"
-      , "Pierre Guilleminot <pierre.guilleminot@gmail.com>"
-    ]
-  , "repository":{
-        "type": "git"
-      , "url": "https://github.com/jinroh/kadoh.git"
-    }
-  , "main" : "./lib/index.js"
-  , "browserify" : "./lib/index-browserify.js"
-  , "dependencies": {
-        "colors"           : "~0.6"
-      , "connect"          : "~2.0"
-      , "express"          : "~2.5"
-      , "ifconfig.me"      : "https://github.com/alexstrat/ifconfig.me-node/tarball/master"
-      , "jake"             : "~0.1"
-      , "klass"            : "~1.2"
-      , "ltx"              : ">= 0.2.0"
-      , "node-xmpp"        : "~0.3"
-      , "bncode"           : "~0.2"
-      , "socket.io"        : "~0.9"
-      , "socket.io-client" : "https://github.com/substack/socket.io-client/tarball/master"
-      , "mustache"         : "~0.4"
-      , "browserify"       : "https://github.com/alexstrat/node-browserify/tarball/for-kadoh"
-      , "tagify"           : "*"
-      , "Strophe.js"       : "https://github.com/alexstrat/strophejs/tarball/for-kadoh"
+  "name": "kadoh",
+  "version": "0.1.0-ttn",
+  "description": "Kademlia over HTTP in Javascript",
+  "keywords": [
+    "p2p",
+    "kad",
+    "kademlia",
+    "dht",
+    "mainline",
+    "bittorrent",
+    "http",
+    "xmpp",
+    "bosh",
+    "udp",
+    "socket.io"
+  ],
+  "contributors": [
+    {
+      "name": "Alexandre Lachèze",
+      "email": "alexandre.lacheze@gmail.com"
     },
-    "scripts": {
-      "test": "jake test:node[spec]"
-    },
-   "devDependencies": {
-        "mocha"          : "~1.0"
-      , "chai"           : "~1.0"
-      , "sinon-chai"     : "~2.1"
-      , "sinon"          : "~1.3"
-      , "optimist"       : "~0.3"
-      , "nconf"          : "~0.5"
-      , "multimeter"     : "~0.1"
+    {
+      "name": "Pierre Guilleminot",
+      "email": "pierre.guilleminot@gmail.com"
     }
-  , "engines": { "node": ">= 0.6.0" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jinroh/kadoh.git"
+  },
+  "main": "./lib/index.js",
+  "dependencies": {
+    "colors": "~0.6",
+    "klass": "~1.2"
+  },
+  "scripts": {
+    "test": "jake test:node[spec]"
+  },
+  "devDependencies": {
+    "mocha": "~1.0",
+    "chai": "~1.0",
+    "sinon-chai": "~2.1",
+    "sinon": "~1.3",
+    "optimist": "~0.3",
+    "nconf": "~0.5",
+    "multimeter": "~0.1"
+  },
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "readme": "# KadOH - Javascript P2P framework\r\n\r\n**KadOH** is a framework to build P2P applications for browsers and node.js. By implementing the basis of the [Kademlia DHT](http://en.wikipedia.org/wiki/Kademlia), KadOH lets you build **distributed web applications** for mobile and desktop devices. With its flexible and extensible design, you can easily adapt KadOH to fit your needs. KadOH is available under the [MIT License](/jinroh/kadoh/blob/master/LICENSE). \r\n\r\nKadOH abstract many different [transport protocols](/jinroh/kadoh/wiki/Transport) to provide P2P connections. In the browser we support [XMPP over Bosh](http://xmpp.org/extensions/xep-0206.html) and [Socket.io](http://socket.io/) shipped with a node.js router, and you can go for UDP and native XMPP in a node.js application. We plan to support **[WebRTC](http://www.webrtc.org/)** soon !\r\n\r\n[See the wiki](/jinroh/kadoh/wiki) for more informations ! Also take look at [our report](http://jinroh.github.com/kadoh) and be aware that this document may be outdated.\r\n\r\n---\r\n\r\n*Acknowledgments* — We would like to thank [Dr. Tudor Dumitraş](http://www.ece.cmu.edu/~tdumitra/), who gave us the honor to work with him during our project and always made available his support.\r\n\r\n**[Alexandre Lachèze](/alexstrat/)** and **[Pierre Guilleminot](/jinroh/)**\r\n\r\n## See it in action\r\n\r\n**[Live demo](http://kadoh.fr.nf/)** based on XMPP transport running on Amazon EC2.\r\n\r\n### Run it yourself\r\n\r\nFirst you can start a little DHT based on UDP transport using this command :\r\n\r\n```\r\nbin/dht udp.default\r\n```\r\n\r\nThen in an other terminal, start the web-based [debug UI](/jinroh/kadoh/wiki/Debug-UI) using the following Jake command and go to `localhost:8080` :\r\n\r\n```sh\r\njake run:udp\r\n```\r\n\r\nSee the wiki for more informations on how to [launch your own DHT](/jinroh/kadoh/wiki/DHT-simulation) from scratch and on different environments.\r\n\r\n## Installation\r\n\r\n### Install KadOH\r\n\r\nThe only required dependency is [node.js](http://nodejs.org/) (version >= 0.6, but you clould try below..). Take a look at the [official manual](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) to install node on your system.\r\n\r\nThen run :\r\n\r\n```sh\r\nnpm install kadoh\r\n# or: git clone https://github.com/jinroh/kadoh.git\r\ncd kadoh\r\nnpm install\r\n```\r\n\r\nYou may also want to install the Jake module globally :\r\n\r\n```\r\nnpm install -g jake\r\n```\r\n\r\n*For Linux users*, if the installation of KadOH's dependencies fails, you may need to install the `libexpat-dev` package. For Ubuntu/Debian users, run the following command :\r\n\r\n```sh\r\nsudo apt-get install libexpat-dev\r\n```\r\n\r\n### Build and go\r\n\r\n#### Browser\r\n\r\nTo build the source inside the `dist` folder run one of the following Jake command :\r\n\r\n```sh\r\njake build\r\n```\r\n\r\nThis will build two versions of KadOH supporting different transports :\r\n\r\n  - SimUDP using Socket.io\r\n  - XMPP using Strophe.js for XMPP over Bosh\r\n\r\n#### Node.js\r\n\r\nIf you need to use KadOH in a node.js application, just add `kadoh` in your package dependencies and use :\r\n\r\n```javascript\r\nvar kadoh = require('kadoh');\r\n```\r\n\r\n## Thanks\r\n\r\nKadOH is built on top of many open-source libraries and projects:\r\n\r\n  - [Strophe.js](http://strophe.im/strophejs/)\r\n  - [node-xmpp](https://github.com/astro/node-xmpp)\r\n  - [cube](https://github.com/square/cube)\r\n  - [klass](https://github.com/ded/klass)\r\n  - [bncode](https://github.com/a2800276/bencode.js)\r\n  - [socket.io](http://socket.io/)\r\n  - [express](http://expressjs.com/)\r\n  - [browserify](https://github.com/substack/node-browserify)\r\n\r\n## Tests\r\n\r\n[![Build Status](https://secure.travis-ci.org/jinroh/kadoh.png?branch=master)](https://secure.travis-ci.org/jinroh/kadoh?branch=master)\r\n\r\n*For the moment, tests are not running anymore.. But we hope that will be fixed as soon as we migrate to Mocha.*\r\n\r\n```\r\njake test:node\r\njake test:browser\r\n```\r\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/jinroh/kadoh/issues"
+  },
+  "_id": "kadoh@0.1.0",
+  "dist": {
+    "shasum": "de41d98232796e52e395a385e03bc44da0e4119a"
+  },
+  "_from": "../kadoh"
 }
