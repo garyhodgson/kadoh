@@ -32,7 +32,8 @@
   "main": "./lib/index.js",
   "dependencies": {
     "colors": "~0.6",
-    "klass": "~1.2"
+    "klass": "~1.2",
+    "nstore": "0.5.2"
   },
   "scripts": {
     "test": "jake test:node[spec]"
